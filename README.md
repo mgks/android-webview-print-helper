@@ -1,38 +1,100 @@
-# Android Library Template 📦
+# Android WebView Print Helper
 
-A Golden Template for creating and publishing Android Libraries (Kotlin) with automatic JitPack and GitHub Packages support.
+[![](https://jitpack.io/v/mgks/android-webview-print-helper.svg)](https://jitpack.io/#mgks/android-webview-print-helper)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## 🚀 How to use this template
+A lightweight utility to print Android WebView content to PDF or physical printers with a single line of code. It handles the `PrintManager`, `PrintDocumentAdapter`, and `PrintAttributes` boilerplate automatically.
 
-### 1. Clone & Rename
-1.  Click **"Use this template"** on GitHub to create a new repo (e.g., `android-biometric-gate`).
-2.  Clone your new repo.
+Extracted from the core of **[Android Smart WebView](https://github.com/mgks/Android-SmartWebView)**.
 
-### 2. Configure Identity
-Open `gradle.properties` and edit the library details:
+<img src="https://github.com/mgks/android-webview-print-helper/blob/main/preview.gif?raw=true" width="200">
 
-```bash
-LIB_ARTIFACT_ID=biometric-gate
-LIB_VERSION=1.0.0
-LIB_NAME=Android Biometric Gate
-LIB_DESCRIPTION=Secure biometric auth...
-LIB_URL=https://github.com/mgks/android-biometric-gate
+## Features
+*   🖨️ **One-Line Print:** Trigger the native Android print dialog instantly.
+*   📄 **PDF & Hardware:** Supports "Save to PDF" and physical printers out of the box.
+*   cw **Optimized Defaults:** Automatically configures media size to ISO A4.
+*   ✅ **Kotlin & Java:** Written in Kotlin but 100% Java-friendly.
+
+## Installation
+
+**Step 1. Add the JitPack repository to your build file**
+
+**Gradle (Kotlin DSL):**
+```kotlin
+repositories {
+    google()
+    mavenCentral()
+    maven { url = uri("https://jitpack.io") }
+}
+```
+**Gradle (Groovy):**
+```groovy
+repositories {
+    google()
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
 ```
 
-### 3. Refactor Package
-1.  Open the project in Android Studio.
-2.  Go to `library/src/main/java/dev/mgks/swv/placeholder`.
-3.  Right-click `placeholder` -> **Refactor** -> **Rename**.
-4.  Rename it to your library name (e.g., `biometric`).
-5.  Android Studio will update all package references.
+**Step 2. Add the dependency**
 
-### 4. Write Code
-*   Add your library code in the `library` module.
-*   Add permissions/manifest entries in `library/src/main/AndroidManifest.xml`.
-*   Use the `app` module to test your library (Edit `app/src/main/java/.../MainActivity.kt`).
+```groovy
+dependencies {
+    implementation 'com.github.mgks:android-webview-print-helper:1.0.0'
+}
+```
 
-### 5. Publish
-1.  Push your changes.
-2.  Create a **Release** on GitHub (tag `v1.0.0`).
-3.  The Action will auto-publish to GitHub Packages.
-4.  JitPack will auto-pickup the release.
+*(Note: Replace `1.0.0` with the latest release tag)*
+
+## Usage
+
+### Kotlin
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+    private lateinit var printHelper: SwvPrintHelper
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // ... setup webview ...
+
+        // 1. Initialize
+        printHelper = SwvPrintHelper(this)
+
+        // 2. Print (e.g., on button click)
+        myButton.setOnClickListener {
+            // Arguments: WebView instance, Document Name (appears in spooler)
+            printHelper.print(myWebView, "My-Document-Name")
+        }
+    }
+}
+```
+
+### Java
+
+```java
+public class MainActivity extends AppCompatActivity {
+    private SwvPrintHelper printHelper;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // ... setup webview ...
+
+        // 1. Initialize
+        printHelper = new SwvPrintHelper(this);
+
+        // 2. Print
+        myButton.setOnClickListener(v -> {
+            printHelper.print(myWebView, "My-Document-Name");
+        });
+    }
+}
+```
+
+## Requirements
+*   **Min SDK:** API 24 (Android 7.0)
+*   **WebView:** Requires a standard Android WebView instance.
+
+## License
+MIT License
