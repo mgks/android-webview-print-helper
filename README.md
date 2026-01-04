@@ -10,10 +10,10 @@ Extracted from the core of **[Android Smart WebView](https://github.com/mgks/And
 <img src="https://github.com/mgks/android-webview-print-helper/blob/main/preview.gif?raw=true" width="200">
 
 ## Features
-*   🖨️ **One-Line Print:** Trigger the native Android print dialog instantly.
-*   📄 **PDF & Hardware:** Supports "Save to PDF" and physical printers out of the box.
-*   cw **Optimized Defaults:** Automatically configures media size to ISO A4.
-*   ✅ **Kotlin & Java:** Written in Kotlin but 100% Java-friendly.
+*     **One-Line Print:** Trigger the native Android print dialog instantly.
+*     **PDF & Hardware:** Supports "Save to PDF" and physical printers out of the box.
+*     **Optimized Defaults:** Automatically configures media size to ISO A4.
+*     **Kotlin & Java:** Written in Kotlin but 100% Java-friendly.
 
 ## Installation
 
@@ -97,4 +97,8 @@ public class MainActivity extends AppCompatActivity {
 *   **WebView:** Requires a standard Android WebView instance.
 
 ## License
-MIT License
+MIT
+
+> **{ github.com/mgks }**
+> 
+> ![Website Badge](https://img.shields.io/badge/Visit-mgks.dev-blue?style=flat&link=https%3A%2F%2Fmgks.dev) ![Sponsor Badge](https://img.shields.io/badge/%20%20Become%20a%20Sponsor%20%20-red?style=flat&logo=github&link=https%3A%2F%2Fgithub.com%2Fsponsors%2Fmgks)
